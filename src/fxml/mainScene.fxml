@@ -17,7 +17,7 @@
    <children>
       <AnchorPane layoutY="55.0" prefHeight="416.0" prefWidth="800.0" style="-fx-background-color: #E9E9EB;">
          <children>
-            <Label fx:id="lblStateDescription" alignment="TOP_CENTER" layoutX="101.0" layoutY="134.0" prefHeight="94.0" prefWidth="590.0" text="Воспользуйся кнопками ниже, чтобы создать массив, который будет сортироваться выбором." textAlignment="CENTER" wrapText="true">
+            <Label fx:id="lblStateDescription" alignment="TOP_CENTER" layoutX="101.0" layoutY="134.0" prefHeight="266.0" prefWidth="590.0" text="Воспользуйся кнопками ниже, чтобы создать массив, который будет сортироваться выбором." textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Segoe UI Semilight" size="15.0" />
                </font>

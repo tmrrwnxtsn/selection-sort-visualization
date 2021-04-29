@@ -13,7 +13,6 @@ import javafx.scene.shape.Rectangle;
 import myanimations.HighlightCell;
 import myexceptions.GoingOutOfNumericRangeException;
 import myanimations.AppearanceOf;
-import myanimations.BlinkingButton;
 
 public class Controller {
 	
@@ -131,7 +130,25 @@ public class Controller {
     
     @FXML
     void nextSortingActionButtonClicked(ActionEvent event) {
-
+    	
+    	currentState.doDependingOnCurrentStateNumber();
+    	
+		if (theArray.getI() < theArray.size()) {
+			
+			if (theArray.getJ() < theArray.size())
+				currentState.setState(2);
+			else
+				currentState.setState(3);
+		}
+		else {
+			currentState.setState(4);
+			isNodeVisible(mainMenuButtons, true);
+			sortArrayButton.setDisable(true);
+			isNodeVisible(sortingControlButtonsHBox, false);
+		}
+		
+		printArrayElements();
+		lblStateDescription.setText(currentState.setCurrentStateDescription());
     }
 
     @FXML
@@ -139,7 +156,17 @@ public class Controller {
     
     @FXML
     void exitSortingButtonClicked(ActionEvent event) {
-
+    	
+    	theArray.selectionSort();
+		currentState.setState(4);
+		
+		isNodeVisible(mainMenuButtons, true);
+		isNodeVisible(sortingControlButtonsHBox, false);
+		sortArrayButton.setDisable(true);
+		
+		lblStateDescription.setText(currentState.setCurrentStateDescription());
+		
+		printArrayElements();
     }
     
     @FXML
@@ -151,6 +178,7 @@ public class Controller {
 		
 		isNodeVisible(sortingControlButtonsHBox, true);
 		isNodeVisible(mainMenuButtons, false);
+		sortArrayButton.setDisable(true);
     	
     	printArrayElements();
     }
@@ -384,16 +412,12 @@ public class Controller {
 			fillArrayButton.setDisable(false);
 		}
 		
-		BlinkingButton theButtonBlinking = new BlinkingButton(sortArrayButton);
-		
 		if (theArray.size() > 1) {
 			sortArrayButton.setDisable(false);
-			theButtonBlinking.start();
 			currentState.setState(0);
 		} 
 		else {
 			sortArrayButton.setDisable(true);
-			theButtonBlinking.stop();
 			currentState.setState(-1);
 		}
 		
