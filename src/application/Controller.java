@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import myanimations.HighlightCell;
+import myexceptions.GoingOutOfNumericRangeException;
 import myanimations.AppearanceOf;
 import myanimations.BlinkingButton;
 
@@ -111,6 +112,8 @@ public class Controller {
 		}
     	
 		canUseSomeButtons();
+		isNodeVisible(delVBox, false);
+    	isNodeVisible(changeVBox, false);
     	printArrayElements();
     }
 
@@ -162,14 +165,22 @@ public class Controller {
     private void confirmAddButtonClicked(ActionEvent event) {
     	
     	try {
-			String strValue = inputAddingField.getText();
-			theArray.add(Integer.parseInt(strValue));
-			highlightCell(theArray.size() - 1, 0, 255, 127);
+			int value = Integer.parseInt(inputAddingField.getText());
+			if (Math.abs(value) >= 10000)
+				throw new GoingOutOfNumericRangeException("Число выходит за рамки допустимого диапазона:" + value);
+			else {
+				theArray.add(value);
+				highlightCell(theArray.size() - 1, 0, 255, 127);
+			}
 		} 
 		catch (NumberFormatException ex) {
 			inputAddingField.setText("Ошибка ввода!");
 			return;
 		}
+    	catch (GoingOutOfNumericRangeException ex) {
+    		inputAddingField.setText("Выход за границы числового диапазона!");
+			return;
+    	}
     	
     	canUseSomeButtons();
     	printArrayElements();

@@ -106,7 +106,7 @@
                      <children>
                         <VBox fx:id="addVBox" disable="true" opacity="0.0" prefHeight="63.0" prefWidth="250.0" spacing="10.0">
                            <children>
-                              <Label text="Введи значение от -1000 до 1000:">
+                              <Label text="Введи значение от -9999 до 9999:">
                                  <font>
                                     <Font name="Segoe UI Semilight" size="14.0" />
                                  </font>
