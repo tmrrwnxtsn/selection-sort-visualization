@@ -25,13 +25,21 @@ public class State {
 			break;
 		case 2:
 			// Пользователь сортирует массив, нажимая на "Следующий шаг"
-			currentStateDescription = "Находим минимальный элемент среди неотсортированной части массива.\n\nОбозначения цветов: отсортированная часть – бежевый, текущий рассматриваемый элемент – синий, а минимальный элемент – красный.";
+			currentStateDescription = "Находим минимальный элемент среди неотсортированной части массива.\n\nОбозначения цветов ячеек: отсортированная часть массива – бежевый, текущий рассматриваемый элемент – синий, а минимальный элемент – красный.";
 			break;
 		case 3:
 			// Пользователь прошёлся по неотсортированной части массива и нашёл в ней минимальный элемент
-			currentStateDescription = "Минимальный элемент в неотсортированной части массива: " + Controller.theArray.getByIndex(Controller.theArray.getLocalMinIndex()) +".\n\nПроизводим обмен этого значения со значением первой неотсортированной позиции.\n\nДалее продолжаем работать с неотсортированной частью, исключив из неё " + Controller.theArray.getByIndex(Controller.theArray.getLocalMinIndex()) + ".";
+			currentStateDescription = "Минимальный элемент в неотсортированной части массива найден, и он равен: " + Controller.theArray.getByIndex(Controller.theArray.getLocalMinIndex()) + ".";
 			break;
 		case 4:
+			// Пользователь меняет 2 элемента местами
+			currentStateDescription = "Производим обмен минимального элемента (" + Controller.theArray.getByIndex(Controller.theArray.getLocalMinIndex()) + ") со значением первой неотсортированной позиции (" + Controller.theArray.getByIndex(Controller.theArray.getI()) +").";
+			break;
+		case 5:
+			// Пользователь меняет 2 элемента местами
+			currentStateDescription = "Далее продолжаем работать с неотсортированной частью, исключив из неё минимальный элемент (" + Controller.theArray.getByIndex(Controller.theArray.getI()) + ").";
+			break;
+		case 6:
 			// Пользователь отсортировал массивы
 			currentStateDescription = "Текущий массив отсортирован. Воспользуйся кнопками, чтобы заполнить массив, который будет сортироваться выбором.";
 			break;
@@ -51,8 +59,10 @@ public class State {
 				Controller.theArray.setLocalMinIndex(Controller.theArray.getJ());	
 			Controller.theArray.inkJ();
 			break;
-		case 3:
+		case 4:
 			Controller.theArray.swapItemsByIndices(Controller.theArray.getLocalMinIndex(), Controller.theArray.getI());
+			break;
+		case 5:
 			Controller.theArray.setLocalMinIndex(Controller.theArray.getI() + 1);;
 			Controller.theArray.inkI();
 			Controller.theArray.setJ(Controller.theArray.getI());

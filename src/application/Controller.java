@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import myanimations.HighlightCell;
 import myexceptions.GoingOutOfNumericRangeException;
@@ -110,6 +111,8 @@ public class Controller {
 			highlightCell(i, 255, 45, 0);
 		}
     	
+    	theArray = new MyArray();
+    	
 		canUseSomeButtons();
 		isNodeVisible(delVBox, false);
     	isNodeVisible(changeVBox, false);
@@ -133,18 +136,29 @@ public class Controller {
     	
     	currentState.doDependingOnCurrentStateNumber();
     	
-		if (theArray.getI() < theArray.size()) {
+		if (theArray.getI() < theArray.size() - 1) {
 			
-			if (theArray.getJ() < theArray.size())
-				currentState.setState(2);
-			else
-				currentState.setState(3);
+			if (currentState.getState() == 3)
+				currentState.setState(4);
+			else {
+				if (currentState.getState() == 4)
+					currentState.setState(5);
+				else {
+					if (theArray.getJ() < theArray.size())
+						currentState.setState(2);
+					else
+						currentState.setState(3);	
+				}
+			}
 		}
 		else {
-			currentState.setState(4);
+			currentState.setState(6);
+			
 			isNodeVisible(mainMenuButtons, true);
 			sortArrayButton.setDisable(true);
 			isNodeVisible(sortingControlButtonsHBox, false);
+			
+			whitenCells();
 		}
 		
 		printArrayElements();
@@ -158,7 +172,7 @@ public class Controller {
     void exitSortingButtonClicked(ActionEvent event) {
     	
     	theArray.selectionSort();
-		currentState.setState(4);
+		currentState.setState(6);
 		
 		isNodeVisible(mainMenuButtons, true);
 		isNodeVisible(sortingControlButtonsHBox, false);
@@ -166,6 +180,7 @@ public class Controller {
 		
 		lblStateDescription.setText(currentState.setCurrentStateDescription());
 		
+		whitenCells();
 		printArrayElements();
     }
     
@@ -178,6 +193,10 @@ public class Controller {
 		
 		isNodeVisible(sortingControlButtonsHBox, true);
 		isNodeVisible(mainMenuButtons, false);
+		isNodeVisible(fillArrayVBox, false);
+    	isNodeVisible(delVBox, false);
+    	isNodeVisible(changeVBox, false);
+    	isNodeVisible(addVBox, false);
 		sortArrayButton.setDisable(true);
     	
     	printArrayElements();
@@ -426,12 +445,93 @@ public class Controller {
     
     private void printArrayElements() {
     	
-    	for (int i = 0; i < 10; i++) {
-    		if (i < theArray.size())
-    			fillCell(i, theArray.getByIndex(i));
+    	for (int currentItemIndex = 0; currentItemIndex < 10; currentItemIndex++) {
+    		
+    		if (currentItemIndex < theArray.size()) {
+    			
+    			fillCell(currentItemIndex, theArray.getByIndex(currentItemIndex));
+    			
+    			if (Controller.currentState.getState() == 2) {
+    				if (currentItemIndex == Controller.theArray.getJ())
+    					paintCell(currentItemIndex, 31, 117, 254);
+    				else {
+    					if (currentItemIndex < Controller.theArray.getI())
+    						paintCell(currentItemIndex, 242, 232, 201);
+    					else {
+    						if (currentItemIndex == Controller.theArray.getLocalMinIndex())
+    							paintCell(currentItemIndex, 255, 36, 0);
+    						else
+    							paintCell(currentItemIndex, 255, 255, 255);
+    					}
+    				}
+    			}
+    			else {
+    				if (Controller.currentState.getState() == 3) {
+    					for (int i = Controller.theArray.getI(); i < 10; i++)
+							paintCell(i, 255, 255, 255);
+    					paintCell(Controller.theArray.getLocalMinIndex(), 255, 36, 0);
+    				}
+    				else {
+    					if (Controller.currentState.getState() == 4 || Controller.currentState.getState() == 5) {
+    						for (int i = Controller.theArray.getI(); i < 10; i++)
+    							paintCell(i, 255, 255, 255);
+    						paintCell(Controller.theArray.getLocalMinIndex(), 254, 254, 34);
+    						paintCell(Controller.theArray.getI(), 254, 254, 34);
+    						if (Controller.theArray.getI() == 9)
+    							paintCell(Controller.theArray.getJ(), 254, 254, 34);
+    						else 
+    							paintCell(Controller.theArray.getJ(), 255, 255, 255);
+    					}
+    					else {
+    						for (int i = 0; i < 10; i++)
+    							paintCell(i, 255, 255, 255);
+    					}
+    				}
+    			}
+    		}
     		else
-    			clearCell(i);
+    			clearCell(currentItemIndex);
     	}
+    }
+    
+    private void whitenCells() {
+    	for (int i = 0; i < 10; i++)
+    		paintCell(i, 255, 255, 255);
+    }
+    
+    private void paintCell(int index, int R, int G, int B) {
+    	switch (index) {
+    	case 0:
+    		rectFirst.setFill(Color.rgb(R, G, B));
+    		break;
+    	case 1:
+    		rectSecond.setFill(Color.rgb(R, G, B));
+    		break;
+    	case 2:
+    		rectThird.setFill(Color.rgb(R, G, B));
+    		break;
+    	case 3:
+    		rectFourth.setFill(Color.rgb(R, G, B));
+    		break;
+    	case 4:
+    		rectFifth.setFill(Color.rgb(R, G, B));
+    		break;
+    	case 5:
+    		rectSixth.setFill(Color.rgb(R, G, B));
+    		break;
+    	case 6:
+    		rectSeventh.setFill(Color.rgb(R, G, B));
+    		break;
+    	case 7:
+    		rectEighth.setFill(Color.rgb(R, G, B));
+    		break;
+    	case 8:
+    		rectNineth.setFill(Color.rgb(R, G, B));
+    		break;
+    	case 9:
+    		rectTenth.setFill(Color.rgb(R, G, B));
+    		break;
+		}
     }
     
     private void fillCell(int index, int arrayElement) {

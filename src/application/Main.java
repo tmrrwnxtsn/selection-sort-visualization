@@ -18,7 +18,7 @@ public class Main extends Application {
 		
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			URL xmlUrl = getClass().getResource("/fxml/mainScene.fxml");
+			URL xmlUrl = getClass().getResource("/fxml/sortScene.fxml");
 			loader.setLocation(xmlUrl);
 			Parent root = loader.load();
 			
