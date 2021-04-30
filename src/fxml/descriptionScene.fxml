@@ -13,7 +13,7 @@
    <children>
       <AnchorPane layoutY="37.0" prefHeight="430.0" prefWidth="800.0" style="-fx-background-color: #E9E9EB;">
          <children>
-            <TextFlow layoutX="13.0" layoutY="8.0" lineSpacing="5.0" prefHeight="310.0" prefWidth="774.0">
+            <TextFlow layoutX="13.0" layoutY="8.0" lineSpacing="5.0" prefHeight="310.0" prefWidth="766.0">
                <children>
                   <Label alignment="TOP_LEFT" prefHeight="30.0" prefWidth="777.0" text="В чём заключается идея данной сортировки?">
                      <font>
@@ -67,7 +67,7 @@
                         <Font name="Segoe UI Semibold" size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="TOP_LEFT" prefHeight="43.0" prefWidth="778.0" text="Худшее время — О(n^2). Лучшее время — О(n^2). Среднее время — О(n^2). Затраты памяти: О(n) — всего, O(1) — дополнительно." wrapText="true">
+                  <Label alignment="TOP_LEFT" prefHeight="43.0" prefWidth="766.0" text="Худшее время — О(n^2). Лучшее время — О(n^2). Среднее время — О(n^2). Затраты памяти: О(n) — всего, O(1) — дополнительно." wrapText="true">
                      <font>
                         <Font name="Segoe UI Semilight" size="15.0" />
                      </font>
