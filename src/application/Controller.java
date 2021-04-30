@@ -60,6 +60,9 @@ public class Controller {
     }
     
     @FXML
+    private Label displayNumberOfFreeCellsLabel;
+    
+    @FXML
     private TextField inputFillArrayField;
     
     @FXML
@@ -72,17 +75,24 @@ public class Controller {
 			int numberRandomElementsToAdd = Integer.parseInt(inputFillArrayField.getText());
 			
 			if (theArray.size() + numberRandomElementsToAdd > 10)
-				numberRandomElementsToAdd = 10 - theArray.size();
-			
-			for (int i = 0; i < numberRandomElementsToAdd; i++) {
-				theArray.add(-1000 + (int) (Math.random() * 2000));
-				highlightCell(theArray.size() - 1, 0, 255, 127);
+				throw new GoingOutOfNumericRangeException("Число выходит за рамки допустимого диапазона: " + numberRandomElementsToAdd);
+			else {
+				for (int i = 0; i < numberRandomElementsToAdd; i++) {
+					theArray.add(-1000 + (int) (Math.random() * 2000));
+					highlightCell(theArray.size() - 1, 0, 255, 127);
+				}
+				
+				displayNumberOfFreeCellsLabel.setText("Свободных ячеек: " + (10 - theArray.size()));
 			}
 		} 
 		catch (NumberFormatException ex) {
 			inputFillArrayField.setText("Ошибка ввода!");
 			return;
 		}
+    	catch (GoingOutOfNumericRangeException ex) {
+    		inputFillArrayField.setText("Не достаточно свободных ячеек!");
+			return;
+    	}
     	
 		canUseSomeButtons();
     	printArrayElements();
@@ -93,6 +103,8 @@ public class Controller {
     
     @FXML
     private void fillArrayButtonClicked(ActionEvent event) {
+    	
+    	displayNumberOfFreeCellsLabel.setText("Свободных ячеек: " + (10 - theArray.size()));
     	
     	isNodeVisible(fillArrayVBox, true);
     	isNodeVisible(delVBox, false);
@@ -213,8 +225,9 @@ public class Controller {
     	
     	try {
 			int value = Integer.parseInt(inputAddingField.getText());
+			
 			if (Math.abs(value) >= 10000)
-				throw new GoingOutOfNumericRangeException("Число выходит за рамки допустимого диапазона:" + value);
+				throw new GoingOutOfNumericRangeException("Число выходит за рамки допустимого диапазона: " + value);
 			else {
 				theArray.add(value);
 				highlightCell(theArray.size() - 1, 0, 255, 127);
@@ -316,10 +329,14 @@ public class Controller {
     private void confirmChangeButtonClicked(ActionEvent event) {
     	
     	try {
-			String strIndex = inputChangingIndexField.getText();
-			String strValue = inputChangingNewElField.getText();
-			theArray.changeByIndex(Integer.parseInt(strIndex), Integer.parseInt(strValue));
-			highlightCell(Integer.parseInt(strIndex), 254, 254, 34);
+    		int value = Integer.parseInt(inputChangingNewElField.getText());
+			if (Math.abs(value) >= 10000)
+				throw new GoingOutOfNumericRangeException("Число выходит за рамки допустимого диапазона: " + value);
+			else {
+				int index = Integer.parseInt(inputChangingIndexField.getText());
+				theArray.changeByIndex(index, value);
+				highlightCell(index, 254, 254, 34);
+			}
 		} 
 		catch (IndexOutOfBoundsException ex) {
 			inputChangingIndexField.setText("Недопустимый индекс!");
@@ -329,6 +346,10 @@ public class Controller {
 			inputChangingNewElField.setText("Ошибка ввода!");
 			return;
 		}
+    	catch (GoingOutOfNumericRangeException ex) {
+    		inputChangingNewElField.setText("Выход за границы числового диапазона!");
+			return;
+    	}
     	
 		canUseSomeButtons();
     	printArrayElements();
@@ -466,15 +487,13 @@ public class Controller {
     				}
     			}
     			else {
-    				if (Controller.currentState.getState() == 3) {
-    					for (int i = Controller.theArray.getI(); i < 10; i++)
-							paintCell(i, 255, 255, 255);
+    				for (int i = Controller.theArray.getI(); i < 10; i++)
+						paintCell(i, 255, 255, 255);
+    				
+    				if (Controller.currentState.getState() == 3)
     					paintCell(Controller.theArray.getLocalMinIndex(), 255, 36, 0);
-    				}
     				else {
     					if (Controller.currentState.getState() == 4 || Controller.currentState.getState() == 5) {
-    						for (int i = Controller.theArray.getI(); i < 10; i++)
-    							paintCell(i, 255, 255, 255);
     						paintCell(Controller.theArray.getLocalMinIndex(), 254, 254, 34);
     						paintCell(Controller.theArray.getI(), 254, 254, 34);
     						if (Controller.theArray.getI() == 9)
@@ -495,11 +514,13 @@ public class Controller {
     }
     
     private void whitenCells() {
+    	
     	for (int i = 0; i < 10; i++)
     		paintCell(i, 255, 255, 255);
     }
     
     private void paintCell(int index, int R, int G, int B) {
+    	
     	switch (index) {
     	case 0:
     		rectFirst.setFill(Color.rgb(R, G, B));
