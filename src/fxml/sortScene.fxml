@@ -13,9 +13,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: rgb(0,120,215);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: rgb(0,120,215);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SortSceneController">
    <children>
-      <AnchorPane layoutY="55.0" prefHeight="416.0" prefWidth="800.0" style="-fx-background-color: #E9E9EB;">
+      <AnchorPane layoutY="37.0" prefHeight="430.0" prefWidth="800.0" style="-fx-background-color: #E9E9EB;">
          <children>
             <Label fx:id="lblStateDescription" alignment="TOP_CENTER" layoutX="17.0" layoutY="134.0" prefHeight="266.0" prefWidth="766.0" text="Воспользуйся кнопками ниже, чтобы создать массив, который будет сортироваться выбором." textAlignment="CENTER" wrapText="true">
                <font>
@@ -276,15 +276,20 @@
             </HBox>
          </children>
       </AnchorPane>
-      <Label alignment="CENTER" prefHeight="55.0" prefWidth="800.0" text="Визуализация сортировки выбором" textFill="WHITE">
+      <Label alignment="CENTER" layoutY="-4.0" prefHeight="40.0" prefWidth="800.0" text="Визуализация сортировки выбором" textFill="WHITE">
          <font>
             <Font name="Segoe UI Semibold" size="27.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutY="471.0" prefHeight="30.0" prefWidth="800.0" text="Выполнил студент группы ПИбд-11, Курмыза Павел" textFill="WHITE">
+      <Label alignment="CENTER" layoutY="469.0" prefHeight="30.0" prefWidth="800.0" text="Выполнил студент группы ПИбд-11, Курмыза Павел" textFill="WHITE">
          <font>
             <Font name="Segoe UI Semilight" size="12.0" />
          </font>
       </Label>
+      <Button fx:id="backToDescriptionButton" layoutX="714.0" layoutY="4.0" mnemonicParsing="false" onAction="#backToDescriptionButtonClicked" text="Справка">
+         <font>
+            <Font name="Segoe UI Semilight" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

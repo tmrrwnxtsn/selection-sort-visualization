@@ -1,4 +1,4 @@
-package myanimations;
+package animations;
 
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;

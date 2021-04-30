@@ -1,21 +1,31 @@
-package application;
+package controllers;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+import animations.AppearanceOf;
+import animations.HighlightCell;
+import application.MyArray;
+import application.State;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import myanimations.HighlightCell;
+import javafx.stage.Stage;
 import myexceptions.GoingOutOfNumericRangeException;
-import myanimations.AppearanceOf;
 
-public class Controller {
+public class SortSceneController {
 	
 	public static MyArray theArray = new MyArray();
 	public static State currentState = new State();
@@ -339,7 +349,7 @@ public class Controller {
 			}
 		} 
 		catch (IndexOutOfBoundsException ex) {
-			inputChangingIndexField.setText("Недопустимый индекс!");
+			inputChangingIndexField.setText("Неверный индекс!");
 			return;
 		}
 		catch (NumberFormatException ex) {
@@ -347,7 +357,7 @@ public class Controller {
 			return;
 		}
     	catch (GoingOutOfNumericRangeException ex) {
-    		inputChangingNewElField.setText("Выход за границы числового диапазона!");
+    		inputChangingNewElField.setText("Выход за границы!");
 			return;
     	}
     	
@@ -472,14 +482,14 @@ public class Controller {
     			
     			fillCell(currentItemIndex, theArray.getByIndex(currentItemIndex));
     			
-    			if (Controller.currentState.getState() == 2) {
-    				if (currentItemIndex == Controller.theArray.getJ())
+    			if (SortSceneController.currentState.getState() == 2) {
+    				if (currentItemIndex == SortSceneController.theArray.getJ())
     					paintCell(currentItemIndex, 31, 117, 254);
     				else {
-    					if (currentItemIndex < Controller.theArray.getI())
+    					if (currentItemIndex < SortSceneController.theArray.getI())
     						paintCell(currentItemIndex, 242, 232, 201);
     					else {
-    						if (currentItemIndex == Controller.theArray.getLocalMinIndex())
+    						if (currentItemIndex == SortSceneController.theArray.getLocalMinIndex())
     							paintCell(currentItemIndex, 255, 36, 0);
     						else
     							paintCell(currentItemIndex, 255, 255, 255);
@@ -487,19 +497,19 @@ public class Controller {
     				}
     			}
     			else {
-    				for (int i = Controller.theArray.getI(); i < 10; i++)
+    				for (int i = SortSceneController.theArray.getI(); i < 10; i++)
 						paintCell(i, 255, 255, 255);
     				
-    				if (Controller.currentState.getState() == 3)
-    					paintCell(Controller.theArray.getLocalMinIndex(), 255, 36, 0);
+    				if (SortSceneController.currentState.getState() == 3)
+    					paintCell(SortSceneController.theArray.getLocalMinIndex(), 255, 36, 0);
     				else {
-    					if (Controller.currentState.getState() == 4 || Controller.currentState.getState() == 5) {
-    						paintCell(Controller.theArray.getLocalMinIndex(), 254, 254, 34);
-    						paintCell(Controller.theArray.getI(), 254, 254, 34);
-    						if (Controller.theArray.getI() == 9)
-    							paintCell(Controller.theArray.getJ(), 254, 254, 34);
+    					if (SortSceneController.currentState.getState() == 4 || SortSceneController.currentState.getState() == 5) {
+    						paintCell(SortSceneController.theArray.getLocalMinIndex(), 254, 254, 34);
+    						paintCell(SortSceneController.theArray.getI(), 254, 254, 34);
+    						if (SortSceneController.theArray.getI() == 9)
+    							paintCell(SortSceneController.theArray.getJ(), 254, 254, 34);
     						else 
-    							paintCell(Controller.theArray.getJ(), 255, 255, 255);
+    							paintCell(SortSceneController.theArray.getJ(), 255, 255, 255);
     					}
     					else {
     						for (int i = 0; i < 10; i++)
@@ -631,5 +641,33 @@ public class Controller {
     	
     	AppearanceOf theAppearanceOfNodeAnimation = new AppearanceOf(theNode, choice);
     	theAppearanceOfNodeAnimation.start();
+    }
+    
+    @FXML
+    private Button backToDescriptionButton;
+
+    @FXML
+    void backToDescriptionButtonClicked(ActionEvent event) {
+    	backToDescriptionButton.getScene().getWindow().hide();
+    	
+    	FXMLLoader loader = new FXMLLoader();
+    	loader.setLocation(getClass().getResource("/fxml/descriptionScene.fxml"));
+    	
+    	try {
+			loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    	
+    	Parent root = loader.getRoot();
+    	Stage descriptionStage = new Stage();
+    	
+    	InputStream iconStream = getClass().getResourceAsStream("/images/sort-icon.png");
+		Image image = new Image(iconStream);
+		descriptionStage.getIcons().add(image);
+    	
+    	descriptionStage.setTitle("Курсовая работа");
+    	descriptionStage.setScene(new Scene(root));
+    	descriptionStage.show();
     }
 }

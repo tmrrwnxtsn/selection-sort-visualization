@@ -1,5 +1,7 @@
 package application;
 
+import controllers.SortSceneController;
+
 public class State {
 	
 	private int currentStateNumber;
@@ -29,15 +31,15 @@ public class State {
 			break;
 		case 3:
 			// Пользователь прошёлся по неотсортированной части массива и нашёл в ней минимальный элемент
-			currentStateDescription = "Минимальный элемент в неотсортированной части массива найден, и он равен: " + Controller.theArray.getByIndex(Controller.theArray.getLocalMinIndex()) + ".";
+			currentStateDescription = "Минимальный элемент в неотсортированной части массива найден, и он равен: " + SortSceneController.theArray.getByIndex(SortSceneController.theArray.getLocalMinIndex()) + ".";
 			break;
 		case 4:
 			// Пользователь меняет 2 элемента местами
-			currentStateDescription = "Производим обмен минимального элемента (" + Controller.theArray.getByIndex(Controller.theArray.getLocalMinIndex()) + ") со значением первой неотсортированной позиции (" + Controller.theArray.getByIndex(Controller.theArray.getI()) +").";
+			currentStateDescription = "Производим обмен минимального элемента (" + SortSceneController.theArray.getByIndex(SortSceneController.theArray.getLocalMinIndex()) + ") со значением первой неотсортированной позиции (" + SortSceneController.theArray.getByIndex(SortSceneController.theArray.getI()) +").";
 			break;
 		case 5:
 			// Пользователь меняет 2 элемента местами
-			currentStateDescription = "Далее продолжаем работать с неотсортированной частью, исключив из неё минимальный элемент (" + Controller.theArray.getByIndex(Controller.theArray.getI()) + ").";
+			currentStateDescription = "Далее продолжаем работать с неотсортированной частью, исключив из неё минимальный элемент (" + SortSceneController.theArray.getByIndex(SortSceneController.theArray.getI()) + ").";
 			break;
 		case 6:
 			// Пользователь отсортировал массивы
@@ -55,17 +57,17 @@ public class State {
 		
 		switch (currentStateNumber) {
 		case 2:
-			if (Controller.theArray.getByIndex(Controller.theArray.getJ()) < Controller.theArray.getByIndex(Controller.theArray.getLocalMinIndex()))
-				Controller.theArray.setLocalMinIndex(Controller.theArray.getJ());	
-			Controller.theArray.inkJ();
+			if (SortSceneController.theArray.getByIndex(SortSceneController.theArray.getJ()) < SortSceneController.theArray.getByIndex(SortSceneController.theArray.getLocalMinIndex()))
+				SortSceneController.theArray.setLocalMinIndex(SortSceneController.theArray.getJ());	
+			SortSceneController.theArray.inkJ();
 			break;
 		case 4:
-			Controller.theArray.swapItemsByIndices(Controller.theArray.getLocalMinIndex(), Controller.theArray.getI());
+			SortSceneController.theArray.swapItemsByIndices(SortSceneController.theArray.getLocalMinIndex(), SortSceneController.theArray.getI());
 			break;
 		case 5:
-			Controller.theArray.setLocalMinIndex(Controller.theArray.getI() + 1);;
-			Controller.theArray.inkI();
-			Controller.theArray.setJ(Controller.theArray.getI());
+			SortSceneController.theArray.setLocalMinIndex(SortSceneController.theArray.getI() + 1);;
+			SortSceneController.theArray.inkI();
+			SortSceneController.theArray.setJ(SortSceneController.theArray.getI());
 			break;
 		default:
 			break;

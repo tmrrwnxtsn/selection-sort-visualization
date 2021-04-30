@@ -1,15 +1,12 @@
 package application;
 	
 import java.io.InputStream;
-import java.net.URL;
-
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
 
 public class Main extends Application {
 	
@@ -17,17 +14,13 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		
 		try {
-			FXMLLoader loader = new FXMLLoader();
-			URL xmlUrl = getClass().getResource("/fxml/sortScene.fxml");
-			loader.setLocation(xmlUrl);
-			Pane root = loader.load();
-			
-			primaryStage.setTitle("Курсовая работа");
+			Parent root = FXMLLoader.load(getClass().getResource("/fxml/descriptionScene.fxml"));
 
 			InputStream iconStream = getClass().getResourceAsStream("/images/sort-icon.png");
 			Image image = new Image(iconStream);
 			primaryStage.getIcons().add(image);
 			
+			primaryStage.setTitle("Курсовая работа");
 			primaryStage.setScene(new Scene(root));
 			primaryStage.show();
 		} 
