@@ -648,6 +648,7 @@ public class SortSceneController {
 
     @FXML
     void backToDescriptionButtonClicked(ActionEvent event) {
+    	
     	backToDescriptionButton.getScene().getWindow().hide();
     	
     	FXMLLoader loader = new FXMLLoader();

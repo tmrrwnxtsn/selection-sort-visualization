@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import application.MyArray;
+import application.State;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +27,9 @@ public class DescriptionSceneController {
 
     @FXML
     void goToSortSceneButtonClicked(ActionEvent event) {
+    	
+    	SortSceneController.theArray = new MyArray();
+    	SortSceneController.currentState = new State();
     	
     	goToSortSceneButton.getScene().getWindow().hide();
     	
