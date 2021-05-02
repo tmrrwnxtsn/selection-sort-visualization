@@ -1,13 +1,16 @@
 package controllers;
 
 import java.awt.Desktop;
+
 import java.io.IOException;
 import java.io.InputStream;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 
 import application.MyArray;
 import application.State;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

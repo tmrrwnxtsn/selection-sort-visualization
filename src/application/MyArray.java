@@ -5,15 +5,15 @@ import java.util.ArrayList;
 public class MyArray {
 	
 	private ArrayList<Integer> Array;
-	private int I = 0;
-	private int J = 0;
-	private int localMinIndex = 0;
+	private int localMinIndex;
+	private int I;
+	private int J;
 	
 	public MyArray() {
 		Array = new ArrayList<Integer>();
+		localMinIndex = 0;
 		I = 0;
 		J = 0;
-		localMinIndex = 0;
 	}
 	
 	public void add(int value) {Array.add(value);}
@@ -40,9 +40,9 @@ public class MyArray {
 	
 	public void swapItemsByIndices(int i, int j) {
 		
-		int t = Array.get(i);
+		int tmp = Array.get(i);
 		Array.set(i, Array.get(j));
-		Array.set(j, t);
+		Array.set(j, tmp);
 	}
 	
 	public void setJ(int J) {this.J = J;}
@@ -51,13 +51,13 @@ public class MyArray {
 	
 	public void setLocalMinIndex(int localMinIndex) {this.localMinIndex = localMinIndex;}
 	
-	public void inkI() {this.I++;}
+	public void inkI() {I++;}
 	
-	public void inkJ() {this.J++;}
+	public void inkJ() {J++;}
 	
-	public int getI() {return this.I;}
+	public int getI() {return I;}
 	
-	public int getJ() {return this.J;}
+	public int getJ() {return J;}
 	
-	public int getLocalMinIndex() {return this.localMinIndex;}
+	public int getLocalMinIndex() {return localMinIndex;}
 }

@@ -15,6 +15,16 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: rgb(252,111,88);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SortSceneController">
    <children>
+      <Label alignment="CENTER" layoutY="-2.0" prefHeight="40.0" prefWidth="800.0" text="Визуализация сортировки выбором" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Semibold" size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="backToDescriptionButton" layoutX="714.0" layoutY="4.0" mnemonicParsing="false" onAction="#backToDescriptionButtonClicked" text="Справка">
+         <font>
+            <Font name="Segoe UI Semilight" size="13.0" />
+         </font>
+      </Button>
       <AnchorPane layoutY="37.0" prefHeight="430.0" prefWidth="800.0" style="-fx-background-color: #E9E9EB;">
          <children>
             <Label fx:id="lblStateDescription" alignment="TOP_CENTER" layoutX="17.0" layoutY="134.0" prefHeight="266.0" prefWidth="766.0" text="Воспользуйся кнопками ниже, чтобы создать массив, который будет сортироваться выбором." textAlignment="CENTER" wrapText="true">
@@ -276,20 +286,10 @@
             </HBox>
          </children>
       </AnchorPane>
-      <Label alignment="CENTER" layoutY="-2.0" prefHeight="40.0" prefWidth="800.0" text="Визуализация сортировки выбором" textFill="WHITE">
-         <font>
-            <Font name="Segoe UI Semibold" size="22.0" />
-         </font>
-      </Label>
       <Label alignment="CENTER" layoutY="469.0" prefHeight="30.0" prefWidth="800.0" text="Выполнил студент группы ПИбд-11, Курмыза Павел" textFill="WHITE">
          <font>
             <Font name="Segoe UI Semilight" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="backToDescriptionButton" layoutX="714.0" layoutY="4.0" mnemonicParsing="false" onAction="#backToDescriptionButtonClicked" text="Справка">
-         <font>
-            <Font name="Segoe UI Semilight" size="13.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>

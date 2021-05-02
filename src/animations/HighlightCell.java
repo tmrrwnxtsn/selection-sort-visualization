@@ -8,18 +8,21 @@ public class HighlightCell extends AnimationTimer {
 
 	private double opacity = 0;
 	private double opacityDirection = 1;
-    private Rectangle rect;
+	
+    private Rectangle theRectangle;
+    
     private long lastUpdate = 0;
-    private int rectColorR;
-    private int rectColorG;
-    private int rectColorB;
+    
+    private int cellColorR;
+    private int cellColorG;
+    private int cellColorB;
     
     public HighlightCell(Rectangle rect, int R, int G, int B) {
     	
-    	this.rect = rect;
-    	this.rectColorR = R;
-    	this.rectColorG = G;
-    	this.rectColorB = B;
+    	this.theRectangle = rect;
+    	this.cellColorR = R;
+    	this.cellColorG = G;
+    	this.cellColorB = B;
     }
 	
 	@Override
@@ -36,19 +39,19 @@ public class HighlightCell extends AnimationTimer {
         opacity += 0.1 * opacityDirection;
 
         if (opacity >= 0 && opacity <= 1 && opacityDirection > 0) {
-        	rect.setFill(Color.rgb(rectColorR, rectColorG, rectColorB, opacity));
+        	theRectangle.setFill(Color.rgb(cellColorR, cellColorG, cellColorB, opacity));
         }
         else {
         	if (opacity >= 1 && opacityDirection > 0) {
         		opacity = 1;
-                rect.setFill(Color.rgb(rectColorR, rectColorG, rectColorB, opacity));
+                theRectangle.setFill(Color.rgb(cellColorR, cellColorG, cellColorB, opacity));
                 opacityDirection = -1;
             }
         	else {
         		if (opacity <= 0 && opacityDirection < 0) {
         			stop();
         			opacity = 1;
-                	rect.setFill(Color.rgb(255, 255, 255, opacity));
+                	theRectangle.setFill(Color.rgb(255, 255, 255, opacity));
                 }
         	}
         }

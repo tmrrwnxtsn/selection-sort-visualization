@@ -5,9 +5,12 @@ import java.io.InputStream;
 
 import animations.AppearanceOf;
 import animations.HighlightCell;
+
 import application.MyArray;
 import application.State;
+
 import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -23,6 +26,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+
 import myexceptions.GoingOutOfNumericRangeException;
 
 public class SortSceneController {

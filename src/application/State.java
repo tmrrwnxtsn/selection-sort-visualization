@@ -6,7 +6,9 @@ public class State {
 	
 	private int currentStateNumber;
 	
-	public State() {currentStateNumber = -1;}
+	public State() {
+		currentStateNumber = -1;
+	}
 	
 	public void setState(int newStateNumber) {currentStateNumber = newStateNumber;}
 	
