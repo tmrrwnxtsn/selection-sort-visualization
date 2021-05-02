@@ -52,7 +52,7 @@ public class DescriptionSceneController {
 		Image image = new Image(iconStream);
 		sortStage.getIcons().add(image);
     	
-    	sortStage.setTitle("Курсовая работа");
+		sortStage.setTitle("Курсовая работа по дисциплине \u00ABАлгоритмы и структуры данных\u00BB");
     	sortStage.setScene(new Scene(root));
     	sortStage.show();
     }

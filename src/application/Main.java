@@ -20,7 +20,7 @@ public class Main extends Application {
 			Image image = new Image(iconStream);
 			primaryStage.getIcons().add(image);
 			
-			primaryStage.setTitle("Курсовая работа");
+			primaryStage.setTitle("Курсовая работа по дисциплине \u00ABАлгоритмы и структуры данных\u00BB");
 			primaryStage.setScene(new Scene(root));
 			primaryStage.show();
 		} 

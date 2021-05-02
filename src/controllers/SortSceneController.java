@@ -673,7 +673,7 @@ public class SortSceneController {
 		Image image = new Image(iconStream);
 		descriptionStage.getIcons().add(image);
     	
-    	descriptionStage.setTitle("Курсовая работа");
+		descriptionStage.setTitle("Курсовая работа по дисциплине \u00ABАлгоритмы и структуры данных\u00BB");
     	descriptionStage.setScene(new Scene(root));
     	descriptionStage.show();
     }
