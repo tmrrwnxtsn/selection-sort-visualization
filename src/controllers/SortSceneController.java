@@ -133,8 +133,6 @@ public class SortSceneController {
 			highlightCell(i, 255, 45, 0);
 		}
     	
-    	theArray = new MyArray();
-    	
 		canUseSomeButtons();
 		isNodeVisible(delVBox, false);
     	isNodeVisible(changeVBox, false);
@@ -193,8 +191,8 @@ public class SortSceneController {
     @FXML
     void exitSortingButtonClicked(ActionEvent event) {
     	
+    	currentState.setState(6);
     	theArray.selectionSort();
-		currentState.setState(6);
 		
 		isNodeVisible(mainMenuButtons, true);
 		isNodeVisible(sortingControlButtonsHBox, false);
@@ -208,6 +206,10 @@ public class SortSceneController {
     
     @FXML
     private void sortArrayButtonClicked(ActionEvent event) {
+    	
+    	theArray.setI(0);
+    	theArray.setJ(0);
+    	theArray.setLocalMinIndex(0);
     	
     	currentState.setState(1);
 		
@@ -360,7 +362,7 @@ public class SortSceneController {
     		inputChangingNewElField.setText("Выход за границы!");
 			return;
     	}
-    	
+
 		canUseSomeButtons();
     	printArrayElements();
     }

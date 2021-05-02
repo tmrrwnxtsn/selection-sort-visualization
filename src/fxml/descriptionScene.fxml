@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: rgb(0,120,215);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DescriptionSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: rgb(252,111,88);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DescriptionSceneController">
    <children>
       <AnchorPane layoutY="37.0" prefHeight="430.0" prefWidth="800.0" style="-fx-background-color: #E9E9EB;">
          <children>
@@ -54,7 +54,7 @@
                         <Insets left="15.0" />
                      </padding>
                   </VBox>
-                  <Label alignment="TOP_LEFT" prefHeight="108.0" prefWidth="778.0" text="В текущей реализации мы проходим по массиву в поисках минимального элемента. Найденный минимум меняем местами с первым элементом. Неотсортированная часть массива уменьшилась на один элемент (не включает первый элемент, куда мы переставили найденный минимум). К этой неотсортированной части применяем те же действия — находим минимум и ставим его на первое место в неотсортированной части массива. И так продолжаем до тех пор, пока неотсортированная часть массива не уменьшится до одного элемента." wrapText="true">
+                  <Label alignment="TOP_LEFT" prefHeight="108.0" prefWidth="767.0" text="В текущей реализации мы проходим по массиву в поисках минимального элемента. Найденный минимум меняем местами с первым элементом. Неотсортированная часть массива уменьшилась на один элемент (так как теперь она не включает в себя первый элемент). К этой неотсортированной части применяем те же действия — находим минимум и ставим его на первое место в неотсортированной части массива. И так продолжаем до тех пор, пока неотсортированная часть массива не уменьшится до одного элемента." wrapText="true">
                      <font>
                         <Font name="Segoe UI Semilight" size="15.0" />
                      </font>
@@ -99,14 +99,14 @@
                </font>
             </Button>
          </children></AnchorPane>
-      <Label alignment="CENTER" layoutY="-4.0" prefHeight="31.0" prefWidth="800.0" text="Визуализация сортировки выбором" textFill="WHITE">
+      <Label alignment="CENTER" layoutY="2.0" prefHeight="31.0" prefWidth="800.0" text="Визуализация сортировки выбором" textFill="WHITE">
          <font>
-            <Font name="Segoe UI Semibold" size="27.0" />
+            <Font name="Segoe UI Semibold" size="22.0" />
          </font>
       </Label>
       <Label alignment="CENTER" layoutY="469.0" prefHeight="30.0" prefWidth="800.0" text="Выполнил студент группы ПИбд-11, Курмыза Павел" textFill="WHITE">
          <font>
-            <Font name="Segoe UI Semilight" size="12.0" />
+            <Font name="Segoe UI Semilight" size="15.0" />
          </font>
       </Label>
    </children>

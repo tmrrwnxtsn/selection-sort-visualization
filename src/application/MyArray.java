@@ -9,7 +9,12 @@ public class MyArray {
 	private int J = 0;
 	private int localMinIndex = 0;
 	
-	public MyArray() {Array = new ArrayList<Integer>();}
+	public MyArray() {
+		Array = new ArrayList<Integer>();
+		I = 0;
+		J = 0;
+		localMinIndex = 0;
+	}
 	
 	public void add(int value) {Array.add(value);}
 	
@@ -41,6 +46,8 @@ public class MyArray {
 	}
 	
 	public void setJ(int J) {this.J = J;}
+	
+	public void setI(int I) {this.I = I;}
 	
 	public void setLocalMinIndex(int localMinIndex) {this.localMinIndex = localMinIndex;}
 	
