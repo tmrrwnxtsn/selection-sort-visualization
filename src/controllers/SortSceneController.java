@@ -104,7 +104,7 @@ public class SortSceneController {
 			return;
 		}
     	catch (GoingOutOfNumericRangeException ex) {
-    		inputFillArrayField.setText("Не достаточно свободных ячеек!");
+    		inputFillArrayField.setText("Недостаточно свободных ячеек!");
 			return;
     	}
     	
@@ -137,9 +137,10 @@ public class SortSceneController {
 			highlightCell(i, 255, 45, 0);
 		}
     	
-		canUseSomeButtons();
-		isNodeVisible(delVBox, false);
+    	isNodeVisible(delVBox, false);
     	isNodeVisible(changeVBox, false);
+    	
+		canUseSomeButtons();
     	printArrayElements();
     }
 
@@ -160,33 +161,42 @@ public class SortSceneController {
     	
     	currentState.doDependingOnCurrentStateNumber();
     	
+    	// Если длина неотсортированной части массива меньше длины самого массива (есть, что сортировать):
 		if (theArray.getI() < theArray.size() - 1) {
-			
+			// Если найден минимум в неотсортированной части массива:
 			if (currentState.getState() == 3)
+				// Меняем местами найденный минимум с первым элементом в неотсортированной части массива
 				currentState.setState(4);
 			else {
+				// Если обмен найденного минимума с первым элементом в неотсортированной части массива произошёл:
 				if (currentState.getState() == 4)
+					// Продолжаем работать с неотсортированной частью массива, исключив найденный минимум
 					currentState.setState(5);
 				else {
+					// Если есть элементы, среди которых можно искать минимум:
 					if (theArray.getJ() < theArray.size())
+						// Переходим к следующему элементу в неотсортированной части массива
 						currentState.setState(2);
 					else
+						// Все элементы в неотсортированной части массива рассмотрены, найден минимум
 						currentState.setState(3);	
 				}
 			}
 		}
 		else {
+			// Массив отсортирован
 			currentState.setState(6);
 			
 			isNodeVisible(mainMenuButtons, true);
 			sortArrayButton.setDisable(true);
 			isNodeVisible(sortingControlButtonsHBox, false);
 			
-			whitenCells();
+			whitenAllCells();
 		}
 		
-		printArrayElements();
 		lblStateDescription.setText(currentState.setCurrentStateDescription());
+		
+		printArrayElements();
     }
 
     @FXML
@@ -204,7 +214,7 @@ public class SortSceneController {
 		
 		lblStateDescription.setText(currentState.setCurrentStateDescription());
 		
-		whitenCells();
+		whitenAllCells();
 		printArrayElements();
     }
     
@@ -486,58 +496,73 @@ public class SortSceneController {
     		
     		if (currentItemIndex < theArray.size()) {
     			
-    			fillCell(currentItemIndex, theArray.getByIndex(currentItemIndex));
+    			printArrayElementInCell(currentItemIndex, theArray.getByIndex(currentItemIndex));
     			
-    			if (SortSceneController.currentState.getState() == 2) {
-    				if (currentItemIndex == SortSceneController.theArray.getJ())
+    			switch(currentState.getState()) {
+    			case 2:
+    				if (currentItemIndex == theArray.getJ())
     					paintCell(currentItemIndex, 31, 117, 254);
     				else {
-    					if (currentItemIndex < SortSceneController.theArray.getI())
+    					if (currentItemIndex < theArray.getI())
     						paintCell(currentItemIndex, 242, 232, 201);
     					else {
-    						if (currentItemIndex == SortSceneController.theArray.getLocalMinIndex())
+    						if (currentItemIndex == theArray.getLocalMinIndex())
     							paintCell(currentItemIndex, 255, 36, 0);
     						else
     							paintCell(currentItemIndex, 255, 255, 255);
     					}
     				}
-    			}
-    			else {
-    				for (int i = SortSceneController.theArray.getI(); i < 10; i++)
+    				break;
+    			case 3:
+    				for (int i = theArray.getI(); i < 10; i++)
 						paintCell(i, 255, 255, 255);
     				
-    				if (SortSceneController.currentState.getState() == 3)
-    					paintCell(SortSceneController.theArray.getLocalMinIndex(), 255, 36, 0);
-    				else {
-    					if (SortSceneController.currentState.getState() == 4 || SortSceneController.currentState.getState() == 5) {
-    						paintCell(SortSceneController.theArray.getLocalMinIndex(), 254, 254, 34);
-    						paintCell(SortSceneController.theArray.getI(), 254, 254, 34);
-    						if (SortSceneController.theArray.getI() == 9)
-    							paintCell(SortSceneController.theArray.getJ(), 254, 254, 34);
-    						else 
-    							paintCell(SortSceneController.theArray.getJ(), 255, 255, 255);
-    					}
-    					else {
-    						for (int i = 0; i < 10; i++)
-    							paintCell(i, 255, 255, 255);
-    					}
-    				}
+    				paintCell(theArray.getLocalMinIndex(), 255, 36, 0);
+    				break;
+    			case 4:
+    				for (int i = theArray.getI(); i < 10; i++)
+						paintCell(i, 255, 255, 255);
+    				
+    				paintCell(theArray.getLocalMinIndex(), 254, 254, 34);
+					paintCell(theArray.getI(), 254, 254, 34);
+					
+					if (theArray.getI() == 9)
+						paintCell(theArray.getJ(), 254, 254, 34);
+					else 
+						paintCell(theArray.getJ(), 255, 255, 255);
+					break;
+    			case 5:
+    				for (int i = theArray.getI(); i < 10; i++)
+						paintCell(i, 255, 255, 255);
+    				
+    				paintCell(theArray.getLocalMinIndex(), 254, 254, 34);
+					paintCell(theArray.getI(), 254, 254, 34);
+					
+					if (theArray.getI() == 9)
+						paintCell(theArray.getJ(), 254, 254, 34);
+					else 
+						paintCell(theArray.getJ(), 255, 255, 255);
+					break;
+    			default:
+    				for (int i = 0; i < 10; i++)
+						paintCell(i, 255, 255, 255);
+    				break;
     			}
     		}
     		else
-    			clearCell(currentItemIndex);
+    			clearCellFromArrayElement(currentItemIndex);
     	}
     }
     
-    private void whitenCells() {
+    private void whitenAllCells() {
     	
-    	for (int i = 0; i < 10; i++)
-    		paintCell(i, 255, 255, 255);
+    	for (int currentCellIndex = 0; currentCellIndex < 10; currentCellIndex++)
+    		paintCell(currentCellIndex, 255, 255, 255);
     }
     
-    private void paintCell(int index, int R, int G, int B) {
+    private void paintCell(int cellIndex, int R, int G, int B) {
     	
-    	switch (index) {
+    	switch (cellIndex) {
     	case 0:
     		rectFirst.setFill(Color.rgb(R, G, B));
     		break;
@@ -571,9 +596,9 @@ public class SortSceneController {
 		}
     }
     
-    private void fillCell(int index, int arrayElement) {
+    private void printArrayElementInCell(int cellIndex, int arrayElement) {
     	
-    	switch (index) {
+    	switch (cellIndex) {
     	case 0:
     		lblFirst.setText(Integer.toString(arrayElement));
     		break;
@@ -607,9 +632,9 @@ public class SortSceneController {
 		}
     }
     
-    private void clearCell(int index) {
+    private void clearCellFromArrayElement(int cellIndex) {
     	
-    	switch (index) {
+    	switch (cellIndex) {
     	case 0:
     		lblFirst.setText("");
     		break;

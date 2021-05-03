@@ -36,11 +36,11 @@ public class State {
 			currentStateDescription = "Минимальный элемент в неотсортированной части массива найден, и он равен: " + SortSceneController.theArray.getByIndex(SortSceneController.theArray.getLocalMinIndex()) + ".";
 			break;
 		case 4:
-			// Пользователь меняет 2 элемента местами
+			// Пользователь МЕНЯЕТ местами минимум с первым элементом в неотсортированной части массива
 			currentStateDescription = "Производим обмен минимального элемента (" + SortSceneController.theArray.getByIndex(SortSceneController.theArray.getLocalMinIndex()) + ") со значением первой неотсортированной позиции (" + SortSceneController.theArray.getByIndex(SortSceneController.theArray.getI()) +").";
 			break;
 		case 5:
-			// Пользователь меняет 2 элемента местами
+			// Пользователь ПОМЕНЯЛ местами минимум с первым элементом в неотсортированной части массива
 			currentStateDescription = "Далее продолжаем работать с неотсортированной частью, исключив из неё минимальный элемент (" + SortSceneController.theArray.getByIndex(SortSceneController.theArray.getI()) + ").";
 			break;
 		case 6:
