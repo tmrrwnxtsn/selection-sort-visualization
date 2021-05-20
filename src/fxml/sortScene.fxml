@@ -13,283 +13,377 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: rgb(252,111,88);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SortSceneController">
-   <children>
-      <Label alignment="CENTER" layoutY="-2.0" prefHeight="40.0" prefWidth="800.0" text="Визуализация сортировки выбором" textFill="WHITE">
-         <font>
-            <Font name="Segoe UI Semibold" size="22.0" />
-         </font>
-      </Label>
-      <Button fx:id="backToDescriptionButton" layoutX="714.0" layoutY="4.0" mnemonicParsing="false" onAction="#backToDescriptionButtonClicked" text="Справка">
-         <font>
-            <Font name="Segoe UI Semilight" size="13.0" />
-         </font>
-      </Button>
-      <AnchorPane layoutY="37.0" prefHeight="430.0" prefWidth="800.0" style="-fx-background-color: #E9E9EB;">
-         <children>
-            <Label fx:id="lblStateDescription" alignment="TOP_CENTER" layoutX="17.0" layoutY="134.0" prefHeight="266.0" prefWidth="766.0" text="Воспользуйся кнопками ниже, чтобы создать массив, который будет сортироваться выбором." textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font name="Segoe UI Semilight" size="15.0" />
-               </font>
-            </Label>
-            <GridPane fx:id="mainMenuButtons" hgap="10.0" layoutX="17.0" layoutY="177.0" prefHeight="225.0" prefWidth="766.0" vgap="10.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="100.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="100.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="100.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="139.9999755859375" minHeight="111.19998779296876" prefHeight="123.9999755859375" />
-                <RowConstraints maxHeight="40.0" minHeight="6.4000244140625" prefHeight="22.4000244140625" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Button fx:id="addButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addButtonClicked" prefWidth="250.0" text="Добавить элемент в массив" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="Segoe UI Semilight" size="13.0" />
-                     </font></Button>
-                  <Button fx:id="delButton" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#delButtonClicked" text="Удалить элемент из массива" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="Segoe UI Semilight" size="13.0" />
-                     </font></Button>
-                  <Button fx:id="changeButton" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#changeButtonClicked" text="Изменить элемент массива" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="Segoe UI Semilight" size="13.0" />
-                     </font></Button>
-                  <Button fx:id="fillArrayButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fillArrayButtonClicked" text="Добавить в массив случайные числа" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Segoe UI Semilight" size="13.0" />
-                     </font></Button>
-                  <Button fx:id="clearArrayButton" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clearArrayButtonClicked" text="Очистить текущий массив" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Segoe UI Semilight" size="13.0" />
-                     </font></Button>
-                  <Button fx:id="sortArrayButton" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#sortArrayButtonClicked" text="Отсортировать текущий массив" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Segoe UI Semilight" size="13.0" />
-                     </font></Button>
-                  <VBox fx:id="delVBox" disable="true" opacity="0.0" prefHeight="106.0" prefWidth="248.0" spacing="10.0" GridPane.columnIndex="1">
-                     <children>
-                        <Label prefHeight="37.0" prefWidth="247.0" text="Введи индекс удаляемого элемента:">
-                           <font>
-                              <Font name="Segoe UI Semilight" size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="inputDeletingField" />
-                        <Button fx:id="confirmDelButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#confirmDelButtonClicked" prefHeight="40.0" prefWidth="248.0" text="Удалить">
-                           <font>
-                              <Font name="Segoe UI Semilight" size="13.0" />
-                           </font>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0"
+            prefWidth="1000.0" style="-fx-background-color: rgb(252,111,88);" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SortSceneController">
+    <children>
+        <Label alignment="CENTER" prefHeight="70.0" prefWidth="1000.0" text="Визуализация сортировки выбором"
+               textFill="WHITE">
+            <font>
+                <Font name="Segoe UI Semibold" size="32.0"/>
+            </font>
+        </Label>
+        <Button fx:id="backToDescriptionButton" layoutX="894.0" layoutY="16.0" mnemonicParsing="false"
+                onAction="#backToDescriptionButtonClicked" text="Справка">
+            <font>
+                <Font name="Segoe UI Semilight" size="18.0"/>
+            </font>
+        </Button>
+        <AnchorPane layoutY="72.0" prefHeight="498.0" prefWidth="1000.0" style="-fx-background-color: #E9E9EB;">
+            <children>
+                <Label fx:id="lblStateDescription" alignment="TOP_CENTER" layoutX="17.0" layoutY="134.0"
+                       prefHeight="345.0" prefWidth="962.0"
+                       text="Воспользуйся кнопками ниже, чтобы создать массив, который будет сортироваться выбором."
+                       textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font name="Segoe UI Semilight" size="20.0"/>
+                    </font>
+                </Label>
+                <GridPane fx:id="mainMenuButtons" hgap="10.0" layoutX="20.0" layoutY="217.0" prefHeight="266.0"
+                          prefWidth="962.0" vgap="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="100.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="100.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="100.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="149.9999755859375" minHeight="111.19998779296876"
+                                        prefHeight="139.9999755859375"/>
+                        <RowConstraints maxHeight="50.0" minHeight="6.4000244140625" prefHeight="22.4000244140625"
+                                        vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="50.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <Button fx:id="addButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                mnemonicParsing="false" onAction="#addButtonClicked" prefWidth="250.0"
+                                text="Добавить элемент в массив" GridPane.rowIndex="1">
+                            <font>
+                                <Font name="Segoe UI Semilight" size="17.0"/>
+                            </font>
                         </Button>
-                     </children>
-                  </VBox>
-                  <VBox fx:id="changeVBox" disable="true" opacity="0.0" prefHeight="35.0" prefWidth="250.0" spacing="10.0" GridPane.columnIndex="2">
-                     <children>
-                        <HBox prefHeight="37.0" prefWidth="250.0" spacing="10.0">
-                           <children>
-                              <Label prefHeight="38.0" prefWidth="122.0" text="Индекс элемента:">
-                                 <font>
-                                    <Font name="Segoe UI Semilight" size="14.0" />
-                                 </font>
-                              </Label>
-                              <VBox prefHeight="200.0" prefWidth="100.0">
-                                 <children>
-                                    <Label alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="116.0" text="Новое значение">
-                                       <font>
-                                          <Font name="Segoe UI Semilight" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="116.0" text="от -9999 до 9999:">
-                                       <font>
-                                          <Font name="Segoe UI Semilight" size="14.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                        <HBox spacing="10.0">
-                           <children>
-                              <TextField fx:id="inputChangingIndexField" />
-                              <TextField fx:id="inputChangingNewElField" />
-                           </children>
-                        </HBox>
-                        <Button fx:id="confirmChangeButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#confirmChangeButtonClicked" prefHeight="40.0" prefWidth="250.0" text="Изменить">
-                           <font>
-                              <Font name="Segoe UI Semilight" size="13.0" />
-                           </font>
+                        <Button fx:id="delButton" disable="true" maxHeight="1.7976931348623157E308"
+                                maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#delButtonClicked"
+                                text="Удалить элемент из массива" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <font>
+                                <Font name="Segoe UI Semilight" size="17.0"/>
+                            </font>
                         </Button>
-                     </children>
-                  </VBox>
-                  <StackPane prefHeight="41.0" prefWidth="250.0">
-                     <children>
-                        <VBox fx:id="addVBox" disable="true" opacity="0.0" prefHeight="63.0" prefWidth="250.0" spacing="10.0">
-                           <children>
-                              <Label prefHeight="37.0" prefWidth="250.0" text="Введи значение от -9999 до 9999:">
-                                 <font>
-                                    <Font name="Segoe UI Semilight" size="14.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="inputAddingField" />
-                              <Button fx:id="confirmAddButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#confirmAddButtonClicked" prefHeight="40.0" prefWidth="250.0" text="Добавить">
-                                 <font>
-                                    <Font name="Segoe UI Semilight" size="13.0" />
-                                 </font>
-                              </Button>
-                           </children>
+                        <Button fx:id="changeButton" disable="true" maxHeight="1.7976931348623157E308"
+                                maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                onAction="#changeButtonClicked" text="Изменить элемент массива" GridPane.columnIndex="2"
+                                GridPane.rowIndex="1">
+                            <font>
+                                <Font name="Segoe UI Semilight" size="17.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="fillArrayButton" maxHeight="1.7976931348623157E308"
+                                maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                onAction="#fillArrayButtonClicked" prefWidth="314.0"
+                                text="Добавить в массив случайные числа" GridPane.rowIndex="2">
+                            <font>
+                                <Font name="Segoe UI Semilight" size="17.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="clearArrayButton" disable="true" maxHeight="1.7976931348623157E308"
+                                maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                onAction="#clearArrayButtonClicked" text="Очистить текущий массив"
+                                GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <font>
+                                <Font name="Segoe UI Semilight" size="17.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="sortArrayButton" disable="true" maxHeight="1.7976931348623157E308"
+                                maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                onAction="#sortArrayButtonClicked" text="Отсортировать текущий массив"
+                                GridPane.columnIndex="2" GridPane.rowIndex="2">
+                            <font>
+                                <Font name="Segoe UI Semilight" size="17.0"/>
+                            </font>
+                        </Button>
+                        <StackPane prefHeight="41.0" prefWidth="250.0">
+                            <children>
+                                <VBox fx:id="addVBox" disable="true" opacity="0.0" prefHeight="63.0" prefWidth="250.0"
+                                      spacing="10.0">
+                                    <children>
+                                        <Label prefHeight="53.0" prefWidth="314.0"
+                                               text="Введи значение от -9999 до 9999:">
+                                            <font>
+                                                <Font name="Segoe UI Semilight" size="18.0"/>
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="inputAddingField">
+                                            <font>
+                                                <Font size="15.0"/>
+                                            </font>
+                                        </TextField>
+                                        <Button fx:id="confirmAddButton" maxHeight="1.7976931348623157E308"
+                                                maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                                onAction="#confirmAddButtonClicked" prefHeight="40.0" prefWidth="250.0"
+                                                text="Добавить">
+                                            <font>
+                                                <Font name="Segoe UI Semilight" size="17.0"/>
+                                            </font>
+                                        </Button>
+                                    </children>
+                                </VBox>
+                                <VBox fx:id="fillArrayVBox" disable="true" opacity="0.0" prefHeight="63.0"
+                                      prefWidth="250.0" spacing="10.0">
+                                    <children>
+                                        <VBox prefHeight="200.0" prefWidth="100.0">
+                                            <children>
+                                                <Label prefHeight="30.0" prefWidth="352.0"
+                                                       text="Введи кол-во случайных элементов.">
+                                                    <font>
+                                                        <Font name="Segoe UI Semilight" size="18.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="displayNumberOfFreeCellsLabel" prefHeight="25.0"
+                                                       prefWidth="250.0" text="Свободных ячеек: 10">
+                                                    <font>
+                                                        <Font name="Segoe UI Semilight" size="18.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </VBox>
+                                        <TextField fx:id="inputFillArrayField">
+                                            <font>
+                                                <Font size="15.0"/>
+                                            </font>
+                                        </TextField>
+                                        <Button fx:id="confirmFillArrayButton" maxHeight="1.7976931348623157E308"
+                                                maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                                onAction="#confirmFillArrayButtonClicked" prefHeight="40.0"
+                                                prefWidth="250.0" text="Добавить">
+                                            <font>
+                                                <Font name="Segoe UI Semilight" size="17.0"/>
+                                            </font>
+                                        </Button>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </StackPane>
+                        <VBox fx:id="delVBox" disable="true" opacity="0.0" prefHeight="106.0" prefWidth="248.0"
+                              spacing="10.0" GridPane.columnIndex="1">
+                            <children>
+                                <Label prefHeight="48.0" prefWidth="314.0" text="Введи индекс удаляемого элемента:">
+                                    <font>
+                                        <Font name="Segoe UI Semilight" size="18.0"/>
+                                    </font>
+                                </Label>
+                                <TextField fx:id="inputDeletingField">
+                                    <font>
+                                        <Font size="15.0"/>
+                                    </font>
+                                </TextField>
+                                <Button fx:id="confirmDelButton" maxHeight="1.7976931348623157E308"
+                                        maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                        onAction="#confirmDelButtonClicked" prefHeight="40.0" prefWidth="248.0"
+                                        text="Удалить">
+                                    <font>
+                                        <Font name="Segoe UI Semilight" size="17.0"/>
+                                    </font>
+                                </Button>
+                            </children>
                         </VBox>
-                        <VBox fx:id="fillArrayVBox" disable="true" opacity="0.0" prefHeight="63.0" prefWidth="250.0" spacing="10.0">
-                           <children>
-                              <VBox prefHeight="200.0" prefWidth="100.0">
-                                 <children>
-                                    <Label prefHeight="25.0" prefWidth="250.0" text="Введи кол-во случайных элементов.">
-                                       <font>
-                                          <Font name="Segoe UI Semilight" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="displayNumberOfFreeCellsLabel" prefHeight="25.0" prefWidth="250.0" text="Свободных ячеек: 10">
-                                       <font>
-                                          <Font name="Segoe UI Semilight" size="14.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                              <TextField fx:id="inputFillArrayField" />
-                              <Button fx:id="confirmFillArrayButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#confirmFillArrayButtonClicked" prefHeight="40.0" prefWidth="250.0" text="Добавить">
-                                 <font>
-                                    <Font name="Segoe UI Semilight" size="13.0" />
-                                 </font>
-                              </Button>
-                           </children>
+                        <VBox fx:id="changeVBox" disable="true" opacity="0.0" prefHeight="35.0" prefWidth="250.0"
+                              spacing="10.0" GridPane.columnIndex="2">
+                            <children>
+                                <HBox prefHeight="49.0" prefWidth="314.0" spacing="10.0">
+                                    <children>
+                                        <Label prefHeight="49.0" prefWidth="155.0" text="Индекс элемента:">
+                                            <font>
+                                                <Font name="Segoe UI Semilight" size="18.0"/>
+                                            </font>
+                                        </Label>
+                                        <VBox prefHeight="200.0" prefWidth="100.0">
+                                            <children>
+                                                <Label alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity"
+                                                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0"
+                                                       prefWidth="142.0" text="Новое значение">
+                                                    <font>
+                                                        <Font name="Segoe UI Semilight" size="18.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity"
+                                                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0"
+                                                       prefWidth="146.0" text="от -9999 до 9999:">
+                                                    <font>
+                                                        <Font name="Segoe UI Semilight" size="18.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                                <HBox spacing="10.0">
+                                    <children>
+                                        <TextField fx:id="inputChangingIndexField">
+                                            <font>
+                                                <Font size="15.0"/>
+                                            </font>
+                                        </TextField>
+                                        <TextField fx:id="inputChangingNewElField">
+                                            <font>
+                                                <Font size="15.0"/>
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                </HBox>
+                                <Button fx:id="confirmChangeButton" maxHeight="1.7976931348623157E308"
+                                        maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                        onAction="#confirmChangeButtonClicked" prefHeight="40.0" prefWidth="250.0"
+                                        text="Изменить">
+                                    <font>
+                                        <Font name="Segoe UI Semilight" size="17.0"/>
+                                    </font>
+                                </Button>
+                            </children>
                         </VBox>
-                     </children>
-                  </StackPane>
-               </children>
-            </GridPane>
-            <HBox layoutX="31.0" layoutY="38.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="3.0">
-               <children>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="rectFirst" arcHeight="5.0" arcWidth="5.0" disable="true" fill="#fffffe" height="70.0" stroke="#4e4e4e" strokeType="INSIDE" width="70.0" />
-                        <Label fx:id="lblFirst">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="25.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </StackPane>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="rectSecond" arcHeight="5.0" arcWidth="5.0" disable="true" fill="WHITE" height="70.0" stroke="#4e4e4e" strokeType="INSIDE" width="70.0" />
-                        <Label fx:id="lblSecond">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="25.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </StackPane>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="rectThird" arcHeight="5.0" arcWidth="5.0" disable="true" fill="WHITE" height="70.0" stroke="#4e4e4e" strokeType="INSIDE" width="70.0" />
-                        <Label fx:id="lblThird">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="25.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </StackPane>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="rectFourth" arcHeight="5.0" arcWidth="5.0" disable="true" fill="WHITE" height="70.0" stroke="#4e4e4e" strokeType="INSIDE" width="70.0" />
-                        <Label fx:id="lblFourth">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="25.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </StackPane>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="rectFifth" arcHeight="5.0" arcWidth="5.0" disable="true" fill="WHITE" height="70.0" stroke="#4e4e4e" strokeType="INSIDE" width="70.0" />
-                        <Label fx:id="lblFifth">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="25.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </StackPane>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="rectSixth" arcHeight="5.0" arcWidth="5.0" disable="true" fill="WHITE" height="70.0" stroke="#4e4e4e" strokeType="INSIDE" width="70.0" />
-                        <Label fx:id="lblSixth">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="25.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </StackPane>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="rectSeventh" arcHeight="5.0" arcWidth="5.0" disable="true" fill="WHITE" height="70.0" stroke="#4e4e4e" strokeType="INSIDE" width="70.0" />
-                        <Label fx:id="lblSeventh">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="25.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </StackPane>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="rectEighth" arcHeight="5.0" arcWidth="5.0" disable="true" fill="WHITE" height="70.0" stroke="#4e4e4e" strokeType="INSIDE" width="70.0" />
-                        <Label fx:id="lblEighth">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="25.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </StackPane>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="rectNineth" arcHeight="5.0" arcWidth="5.0" disable="true" fill="WHITE" height="70.0" stroke="#4e4e4e" strokeType="INSIDE" width="70.0" />
-                        <Label fx:id="lblNineth">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="25.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </StackPane>
-                  <StackPane>
-                     <children>
-                        <Rectangle fx:id="rectTenth" arcHeight="5.0" arcWidth="5.0" disable="true" fill="WHITE" height="70.0" stroke="#4e4e4e" strokeType="INSIDE" width="70.0" />
-                        <Label fx:id="lblTenth">
-                           <font>
-                              <Font name="Segoe UI Semibold" size="25.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </StackPane>
-               </children>
-            </HBox>
-            <HBox fx:id="sortingControlButtonsHBox" disable="true" layoutX="263.0" layoutY="362.0" opacity="0.0" prefHeight="40.0" spacing="10.0">
-               <children>
-                  <Button fx:id="nextSortingActionButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#nextSortingActionButtonClicked" text="Следующий шаг">
-                     <font>
-                        <Font name="Segoe UI Semilight" size="13.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="exitSortingButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#exitSortingButtonClicked" text="Завершить сортировку">
-                     <font>
-                        <Font name="Segoe UI Semilight" size="13.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-         </children>
-      </AnchorPane>
-      <Label alignment="CENTER" layoutY="469.0" prefHeight="30.0" prefWidth="800.0" text="Выполнил студент группы ПИбд-11, Курмыза Павел" textFill="WHITE">
-         <font>
-            <Font name="Segoe UI Semilight" size="15.0" />
-         </font>
-      </Label>
-   </children>
+                    </children>
+                </GridPane>
+                <HBox alignment="CENTER" layoutX="20.0" layoutY="14.0" maxHeight="1.7976931348623157E308"
+                      maxWidth="1.7976931348623157E308" prefHeight="105.0" prefWidth="962.0" spacing="5.0">
+                    <children>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="rectFirst" arcHeight="5.0" arcWidth="5.0" disable="true"
+                                           fill="#fffffe" height="85.0" stroke="#4e4e4e" strokeType="INSIDE"
+                                           width="85.0"/>
+                                <Label fx:id="lblFirst">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="30.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="rectSecond" arcHeight="5.0" arcWidth="5.0" disable="true" fill="WHITE"
+                                           height="85.0" stroke="#4e4e4e" strokeType="INSIDE" width="85.0"/>
+                                <Label fx:id="lblSecond">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="30.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="rectThird" arcHeight="5.0" arcWidth="5.0" disable="true" fill="WHITE"
+                                           height="85.0" stroke="#4e4e4e" strokeType="INSIDE" width="85.0"/>
+                                <Label fx:id="lblThird">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="30.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="rectFourth" arcHeight="5.0" arcWidth="5.0" disable="true" fill="WHITE"
+                                           height="85.0" stroke="#4e4e4e" strokeType="INSIDE" width="85.0"/>
+                                <Label fx:id="lblFourth">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="30.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="rectFifth" arcHeight="5.0" arcWidth="5.0" disable="true" fill="WHITE"
+                                           height="85.0" stroke="#4e4e4e" strokeType="INSIDE" width="85.0"/>
+                                <Label fx:id="lblFifth">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="30.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="rectSixth" arcHeight="5.0" arcWidth="5.0" disable="true" fill="WHITE"
+                                           height="85.0" stroke="#4e4e4e" strokeType="INSIDE" width="85.0"/>
+                                <Label fx:id="lblSixth">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="30.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="rectSeventh" arcHeight="5.0" arcWidth="5.0" disable="true"
+                                           fill="WHITE" height="85.0" stroke="#4e4e4e" strokeType="INSIDE"
+                                           width="85.0"/>
+                                <Label fx:id="lblSeventh">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="30.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="rectEighth" arcHeight="5.0" arcWidth="5.0" disable="true" fill="WHITE"
+                                           height="85.0" stroke="#4e4e4e" strokeType="INSIDE" width="85.0"/>
+                                <Label fx:id="lblEighth">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="30.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="rectNineth" arcHeight="5.0" arcWidth="5.0" disable="true" fill="WHITE"
+                                           height="85.0" stroke="#4e4e4e" strokeType="INSIDE" width="85.0"/>
+                                <Label fx:id="lblNineth">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="30.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <StackPane>
+                            <children>
+                                <Rectangle fx:id="rectTenth" arcHeight="5.0" arcWidth="5.0" disable="true" fill="WHITE"
+                                           height="85.0" stroke="#4e4e4e" strokeType="INSIDE" width="85.0"/>
+                                <Label fx:id="lblTenth">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="30.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                    </children>
+                </HBox>
+                <HBox fx:id="sortingControlButtonsHBox" disable="true" layoutX="324.0" layoutY="400.0" opacity="0.0"
+                      prefHeight="50.0" spacing="10.0">
+                    <children>
+                        <Button fx:id="nextSortingActionButton" maxHeight="1.7976931348623157E308"
+                                maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                onAction="#nextSortingActionButtonClicked" text="Следующий шаг">
+                            <font>
+                                <Font name="Segoe UI Semilight" size="17.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="exitSortingButton" maxHeight="1.7976931348623157E308"
+                                maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                onAction="#exitSortingButtonClicked" text="Завершить сортировку">
+                            <font>
+                                <Font name="Segoe UI Semilight" size="17.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
+        <Label alignment="CENTER" layoutY="574.0" prefHeight="50.0" prefWidth="1000.0"
+               text="Выполнил студент группы ПИбд-11, Курмыза Павел" textFill="WHITE">
+            <font>
+                <Font name="Segoe UI Semilight" size="20.0"/>
+            </font>
+        </Label>
+    </children>
 </AnchorPane>

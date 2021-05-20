@@ -9,41 +9,42 @@ import javafx.util.Duration;
 
 public class AppearanceOf extends AnimationTimer {
 
-	private KeyValue initKeyValue;
-	private KeyFrame initFrame;
-	private KeyValue endKeyValue;
-	private KeyFrame endFrame;
-	private Node theNode;
-	private boolean choice;
+    private final Node theNode;
+    private final boolean choice;
 
-	public AppearanceOf(Node theNode, boolean choice) {
+    public AppearanceOf(Node theNode, boolean choice) {
 
-		this.theNode = theNode;
-		this.choice = choice;
-	}
+        this.theNode = theNode;
+        this.choice = choice;
+    }
 
-	@Override
-	public void handle(long now) {
-		doHandle();
-	}
+    @Override
+    public void handle(long now) {
+        doHandle();
+    }
 
-	private void doHandle() {
+    private void doHandle() {
 
-		if (choice) {
-			initKeyValue = new KeyValue(theNode.opacityProperty(), theNode.getOpacity());
-			initFrame = new KeyFrame(Duration.ZERO, initKeyValue);
-			endKeyValue = new KeyValue(theNode.opacityProperty(), 1.0);
-			endFrame = new KeyFrame(Duration.seconds(0.3), endKeyValue);
-			theNode.setDisable(false);
-		} else {
-			initKeyValue = new KeyValue(theNode.opacityProperty(), theNode.getOpacity());
-			initFrame = new KeyFrame(Duration.ZERO, initKeyValue);
-			endKeyValue = new KeyValue(theNode.opacityProperty(), 0.0);
-			endFrame = new KeyFrame(Duration.seconds(0.3), endKeyValue);
-			theNode.setDisable(true);
-		}
+        KeyValue initKeyValue;
+        KeyFrame initFrame;
+        KeyValue endKeyValue;
+        KeyFrame endFrame;
 
-		Timeline timeline = new Timeline(initFrame, endFrame);
-		timeline.play();
-	}
+        if (choice) {
+            initKeyValue = new KeyValue(theNode.opacityProperty(), theNode.getOpacity());
+            initFrame = new KeyFrame(Duration.ZERO, initKeyValue);
+            endKeyValue = new KeyValue(theNode.opacityProperty(), 1.0);
+            endFrame = new KeyFrame(Duration.seconds(0.3), endKeyValue);
+            theNode.setDisable(false);
+        } else {
+            initKeyValue = new KeyValue(theNode.opacityProperty(), theNode.getOpacity());
+            initFrame = new KeyFrame(Duration.ZERO, initKeyValue);
+            endKeyValue = new KeyValue(theNode.opacityProperty(), 0.0);
+            endFrame = new KeyFrame(Duration.seconds(0.3), endKeyValue);
+            theNode.setDisable(true);
+        }
+
+        Timeline timeline = new Timeline(initFrame, endFrame);
+        timeline.play();
+    }
 }

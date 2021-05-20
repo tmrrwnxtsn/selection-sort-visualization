@@ -9,105 +9,120 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: rgb(252,111,88);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DescriptionSceneController">
-   <children>
-      <AnchorPane layoutY="37.0" prefHeight="430.0" prefWidth="800.0" style="-fx-background-color: #E9E9EB;">
-         <children>
-            <TextFlow layoutX="13.0" layoutY="8.0" lineSpacing="5.0" prefHeight="310.0" prefWidth="766.0">
-               <children>
-                  <Label alignment="TOP_LEFT" prefHeight="30.0" prefWidth="777.0" text="В чём заключается идея данной сортировки?">
-                     <font>
-                        <Font name="Segoe UI Semibold" size="18.0" />
-                     </font>
-                  </Label>
-                  <VBox prefHeight="77.0" prefWidth="774.0" spacing="5.0">
-                     <children>
-                        <Label text="1. В неотсортированном подмассиве ищется локальный минимум (может быть и максимум);">
-                           <font>
-                              <Font name="Segoe UI Semilight" size="15.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0"
+            prefWidth="1000.0" style="-fx-background-color: rgb(252,111,88);" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DescriptionSceneController">
+    <children>
+        <Label alignment="CENTER" prefHeight="70.0" prefWidth="1000.0" text="Визуализация сортировки выбором"
+               textFill="WHITE">
+            <font>
+                <Font name="Segoe UI Semibold" size="32.0"/>
+            </font>
+        </Label>
+        <AnchorPane layoutY="72.0" prefHeight="498.0" prefWidth="1000.0" style="-fx-background-color: #E9E9EB;">
+            <children>
+                <TextFlow layoutX="14.0" layoutY="8.0" lineSpacing="5.0" prefHeight="365.0" prefWidth="974.0">
+                    <children>
+                        <Label alignment="TOP_LEFT" prefHeight="30.0" prefWidth="972.0"
+                               text="В чём заключается идея данной сортировки?">
+                            <font>
+                                <Font name="Segoe UI Semibold" size="22.0"/>
+                            </font>
                         </Label>
-                        <Label text="2. Найденный минимум меняется местами с первым (может меняться с последним) элементом в подмассиве;">
-                           <font>
-                              <Font name="Segoe UI Semilight" size="15.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
+                        <VBox prefHeight="78.0" prefWidth="972.0" spacing="5.0">
+                            <children>
+                                <Label text="1. В неотсортированном подмассиве ищется локальный минимум (может быть и максимум);">
+                                    <font>
+                                        <Font name="Segoe UI Semilight" size="18.0"/>
+                                    </font>
+                                    <opaqueInsets>
+                                        <Insets/>
+                                    </opaqueInsets>
+                                </Label>
+                                <Label text="2. Найденный минимум меняется местами с первым (может меняться с последним) элементом в подмассиве;">
+                                    <font>
+                                        <Font name="Segoe UI Semilight" size="18.0"/>
+                                    </font>
+                                    <opaqueInsets>
+                                        <Insets/>
+                                    </opaqueInsets>
+                                </Label>
+                                <Label text="3. Если в массиве остались неотсортированные подмассивы — смотри пункт 1.">
+                                    <font>
+                                        <Font name="Segoe UI Semilight" size="18.0"/>
+                                    </font>
+                                    <opaqueInsets>
+                                        <Insets/>
+                                    </opaqueInsets>
+                                </Label>
+                            </children>
+                            <opaqueInsets>
+                                <Insets/>
+                            </opaqueInsets>
+                            <padding>
+                                <Insets left="15.0"/>
+                            </padding>
+                        </VBox>
+                        <Label alignment="TOP_LEFT" prefHeight="136.0" prefWidth="974.0"
+                               text="В текущей реализации мы проходим по массиву в поисках минимального элемента. Найденный минимум меняем местами с первым элементом. Неотсортированная часть массива уменьшилась на один элемент (так как теперь она не включает в себя первый элемент). К этой неотсортированной части применяем те же действия — находим минимум и ставим его на первое место в неотсортированной части массива. И так продолжаем до тех пор, пока неотсортированная часть массива не уменьшится до одного элемента."
+                               wrapText="true">
+                            <font>
+                                <Font name="Segoe UI Semilight" size="18.0"/>
+                            </font>
+                            <padding>
+                                <Insets left="15.0"/>
+                            </padding>
                         </Label>
-                        <Label text="3. Если в массиве остались неотсортированные подмассивы — смотри пункт 1.">
-                           <font>
-                              <Font name="Segoe UI Semilight" size="15.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
+                        <Label alignment="TOP_LEFT" prefHeight="30.0" prefWidth="974.0"
+                               text="К слову об эффективности сортировки выбором.">
+                            <font>
+                                <Font name="Segoe UI Semibold" size="22.0"/>
+                            </font>
                         </Label>
-                     </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
-                  </VBox>
-                  <Label alignment="TOP_LEFT" prefHeight="108.0" prefWidth="767.0" text="В текущей реализации мы проходим по массиву в поисках минимального элемента. Найденный минимум меняем местами с первым элементом. Неотсортированная часть массива уменьшилась на один элемент (так как теперь она не включает в себя первый элемент). К этой неотсортированной части применяем те же действия — находим минимум и ставим его на первое место в неотсортированной части массива. И так продолжаем до тех пор, пока неотсортированная часть массива не уменьшится до одного элемента." wrapText="true">
-                     <font>
-                        <Font name="Segoe UI Semilight" size="15.0" />
-                     </font>
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
-                  </Label>
-                  <Label alignment="TOP_LEFT" prefHeight="30.0" prefWidth="777.0" text="К слову об эффективности сортировки выбором.">
-                     <font>
-                        <Font name="Segoe UI Semibold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="TOP_LEFT" prefHeight="43.0" prefWidth="766.0" text="Худшее время — О(n^2). Лучшее время — О(n^2). Среднее время — О(n^2). Затраты памяти: О(n) — всего, O(1) — дополнительно." wrapText="true">
-                     <font>
-                        <Font name="Segoe UI Semilight" size="15.0" />
-                     </font>
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
-                  </Label>
-                  <Label alignment="TOP_LEFT" prefHeight="0.0" prefWidth="778.0" text="Исходный код данной реализации сортировки выбором представлен в моём профиле на GitHub:" wrapText="true">
-                     <font>
-                        <Font name="Segoe UI Semilight" size="15.0" />
-                     </font>
-                  </Label>
-                  <Hyperlink fx:id="myGithubHyperlink" onAction="#myGithubHyperlinkClicked" text="https://github.com/tmrrwnxtsn/term-paper-in-algorithms">
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
-                     <font>
-                        <Font name="Segoe UI Semilight" size="15.0" />
-                     </font>
-                  </Hyperlink>
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </TextFlow>
-            <Button fx:id="goToSortSceneButton" layoutX="265.0" layoutY="384.0" mnemonicParsing="false" onAction="#goToSortSceneButtonClicked" text="Перейти к визуализации сортировки">
-               <font>
-                  <Font name="Segoe UI Semilight" size="15.0" />
-               </font>
-            </Button>
-         </children></AnchorPane>
-      <Label alignment="CENTER" layoutY="2.0" prefHeight="31.0" prefWidth="800.0" text="Визуализация сортировки выбором" textFill="WHITE">
-         <font>
-            <Font name="Segoe UI Semibold" size="22.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutY="469.0" prefHeight="30.0" prefWidth="800.0" text="Выполнил студент группы ПИбд-11, Курмыза Павел" textFill="WHITE">
-         <font>
-            <Font name="Segoe UI Semilight" size="15.0" />
-         </font>
-      </Label>
-   </children>
+                        <Label alignment="TOP_LEFT" prefHeight="54.0" prefWidth="974.0"
+                               text="Худшее время — О(n^2). Лучшее время — О(n^2). Среднее время — О(n^2). Затраты памяти: О(n) — всего, O(1) — дополнительно."
+                               wrapText="true">
+                            <font>
+                                <Font name="Segoe UI Semilight" size="18.0"/>
+                            </font>
+                            <padding>
+                                <Insets left="15.0"/>
+                            </padding>
+                        </Label>
+                        <Label alignment="TOP_LEFT" prefHeight="22.0" prefWidth="974.0"
+                               text="Исходный код данной реализации сортировки выбором представлен в моём профиле на GitHub:"
+                               wrapText="true">
+                            <font>
+                                <Font name="Segoe UI Semilight" size="18.0"/>
+                            </font>
+                        </Label>
+                        <Hyperlink fx:id="myGithubHyperlink" onAction="#myGithubHyperlinkClicked" prefHeight="23.0"
+                                   prefWidth="975.0" text="https://github.com/tmrrwnxtsn/term-paper-in-algorithms">
+                            <padding>
+                                <Insets left="15.0"/>
+                            </padding>
+                            <font>
+                                <Font name="Segoe UI Semilight" size="18.0"/>
+                            </font>
+                        </Hyperlink>
+                    </children>
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                </TextFlow>
+                <Button fx:id="goToSortSceneButton" layoutX="340.0" layoutY="448.0" mnemonicParsing="false"
+                        onAction="#goToSortSceneButtonClicked" text="Перейти к визуализации сортировки">
+                    <font>
+                        <Font name="Segoe UI Semilight" size="18.0"/>
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+        <Label alignment="CENTER" layoutY="574.0" prefHeight="50.0" prefWidth="1000.0"
+               text="Выполнил студент группы ПИбд-11, Курмыза Павел" textFill="WHITE">
+            <font>
+                <Font name="Segoe UI Semilight" size="20.0"/>
+            </font>
+        </Label>
+    </children>
 </AnchorPane>
