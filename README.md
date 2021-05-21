@@ -5,11 +5,12 @@
 
 ### Скриншоты
 
+<div>
 <img src="https://user-images.githubusercontent.com/49313203/119182647-3d30f480-ba84-11eb-93bd-105f01d2187d.png" width="300" alt="Вид приложения после запуска">
 <img src="https://user-images.githubusercontent.com/49313203/119185210-8f274980-ba87-11eb-8a9e-87c1798edf11.png" width="300" alt="Вид приложения во время создания массива">
 <img src="https://user-images.githubusercontent.com/49313203/119183022-90a34280-ba84-11eb-813b-9ac5ff8945dc.png" width="300" alt="Вид приложения в процессе работы алгоритма сортировки выбором">
 <img src="https://user-images.githubusercontent.com/49313203/119185027-3bb4fb80-ba87-11eb-8d9f-ee932343046e.png" width="300" alt="Вид приложения в процессе работы алгоритма сортировки выбором">
-
+</div>
 
 ### Установка и запуск
 
