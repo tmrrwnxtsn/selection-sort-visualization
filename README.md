@@ -14,7 +14,7 @@
 
 Чтобы запустить приложение, необходимо:
 
-1) Установить JDK 8
+1) Установить JRE 8
 2) Перейти к [релизу первой версии приложения](https://github.com/tmrrwnxtsn/term-paper-in-algorithms/releases/tag/v1.0)
 3) Скачать оттуда архив `Visualization_of_the_selection_sorting_algorithm.zip` и распаковать его
 4) В директории, куда был распакован архив, найти файл `run.bat` и открыть его
