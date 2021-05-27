@@ -156,7 +156,7 @@ public class SortSceneController {
     private Button nextSortingActionButton;
 
     @FXML
-    void nextSortingActionButtonClicked(ActionEvent event) {
+    private void nextSortingActionButtonClicked(ActionEvent event) {
 
         currentState.doDependingOnCurrentStateNumber();
 
@@ -205,7 +205,7 @@ public class SortSceneController {
     private Button exitSortingButton;
 
     @FXML
-    void exitSortingButtonClicked(ActionEvent event) {
+    private void exitSortingButtonClicked(ActionEvent event) {
 
         currentState.setState(6);
         theArray.selectionSort();
@@ -659,7 +659,7 @@ public class SortSceneController {
     private Button backToDescriptionButton;
 
     @FXML
-    void backToDescriptionButtonClicked(ActionEvent event) {
+    private void backToDescriptionButtonClicked(ActionEvent event) {
 
         backToDescriptionButton.getScene().getWindow().hide();
 

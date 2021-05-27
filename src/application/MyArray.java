@@ -6,8 +6,8 @@ public class MyArray {
 
     private final ArrayList<Integer> Array;
     private int localMinIndex;
-    private int I;
-    private int J;
+    private int I; // Индекс элемента, стоящего первым в неотсортированной части массива
+    private int J; // Индекс текущего рассматриваемого элемента
 
     public MyArray() {
         Array = new ArrayList<>();

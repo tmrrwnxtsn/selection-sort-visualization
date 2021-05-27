@@ -29,7 +29,7 @@ public class DescriptionSceneController {
     private Button goToSortSceneButton;
 
     @FXML
-    void goToSortSceneButtonClicked(ActionEvent event) {
+    private void goToSortSceneButtonClicked(ActionEvent event) {
 
         SortSceneController.theArray = new MyArray();
         SortSceneController.currentState = new State();
@@ -62,7 +62,7 @@ public class DescriptionSceneController {
     private Hyperlink myGithubHyperlink;
 
     @FXML
-    void myGithubHyperlinkClicked(ActionEvent event) {
+    private void myGithubHyperlinkClicked(ActionEvent event) {
 
         try {
             Desktop d = Desktop.getDesktop();
@@ -73,7 +73,7 @@ public class DescriptionSceneController {
     }
 
     @FXML
-    void initialize() {
+    private void initialize() {
 
         Image image = new Image("/images/github-icon.png", 25, 25, false, false);
         ImageView imageView = new ImageView(image);
