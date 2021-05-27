@@ -71,7 +71,6 @@ public class State {
                 break;
             case 5:
                 SortSceneController.theArray.setLocalMinIndex(SortSceneController.theArray.getI() + 1);
-                ;
                 SortSceneController.theArray.inkI();
                 SortSceneController.theArray.setJ(SortSceneController.theArray.getI());
                 break;
