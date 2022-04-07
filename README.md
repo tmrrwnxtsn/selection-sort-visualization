@@ -16,7 +16,7 @@ To launch the application, you need:
 
 1) Install JRE 8
 2) Go to the release page of the [first version of the application](https://github.com/tmrrwnxtsn/term-paper-in-algorithms/releases/tag/v1.0)
-3) You need to download the archive `Visualization_of_the_selection_sorting_algorithm.zip` from the release page and unpack it
+3) Download the archive `Visualization_of_the_selection_sorting_algorithm.zip` from the release page and unpack it
 4) Find the file `run.bat` in the directory where the archive was unpacked and open the file
 
 ### Description of the source code
