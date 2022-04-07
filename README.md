@@ -1,36 +1,36 @@
-## Визуализация работы алгоритма сортировки выбором
+## Selection sort visualization app
 
-В данном репозитории представлен исходный код Java-приложения, пошагово демонстрирующего работу алгоритма сортировки
-выбором. Приложение написано с использованием платформы JavaFX.
+This repository contains the source code of a Java application that step-by-step demonstrates the operation
+of the selection sorting algorithm. The application is written using the JavaFX.
 
-### Скриншоты
+### Screenshots
 
 <div>
 <img src="https://user-images.githubusercontent.com/49313203/119182647-3d30f480-ba84-11eb-93bd-105f01d2187d.png" width="400" alt="Вид приложения после запуска">
 <img src="https://user-images.githubusercontent.com/49313203/119185210-8f274980-ba87-11eb-8a9e-87c1798edf11.png" width="400" alt="Вид приложения во время создания массива">
 </div>
 
-### Установка и запуск
+### Installation and launch
 
-Чтобы запустить приложение, необходимо:
+To launch the application, you need:
 
-1) Установить JRE 8
-2) Перейти к [релизу первой версии приложения](https://github.com/tmrrwnxtsn/term-paper-in-algorithms/releases/tag/v1.0)
-3) Скачать оттуда архив `Visualization_of_the_selection_sorting_algorithm.zip` и распаковать его
-4) В директории, куда был распакован архив, найти файл `run.bat` и открыть его
+1) Install JRE 8
+2) Go to the release page of the [first version of the application](https://github.com/tmrrwnxtsn/term-paper-in-algorithms/releases/tag/v1.0)
+3) You need to download the archive `Visualization_of_the_selection_sorting_algorithm.zip` from the release page and unpack it
+4) Find the file `run.bat` in the directory where the archive was unpacked and open the file
 
-### Описание исходного кода
+### Description of the source code
 
-| Файл | Описание |
+| File | Description |
 |----|----|
-| animations/AppearanceOf.java | Класс, анимирующий появление (или исчезновение) элементов GUI |
-| animations/HighlightCell.java | Класс, подсвечивающий ячейки с элементами массива |
-| application/Main.java | Основной класс, через который запускается приложение |
-| application/MyArray.java | Класс массива, сортируемого выбором |
-| application/State.java | Класс, отслеживающий, на каком этапе сортировки (или работы с приложением) находится пользователь |
-| fxml/descriptionScene.fxml | Файл, в котором определены все элементы и их свойства начальной сцены |
-| fxml/sortScene.fxml | Файл, в котором определены все элементы и их свойства сцены с сортировкой |
-| images | Папка с изображениями, используемыми в приложении |
-| controllers/DescriptionSceneController.java | Класс-обработчик событий элементов GUI, располагающихся в файле descriptionScene.fxml |
-| controllers/SortSceneController.java | Класс-обработчик событий элементов GUI, располагающихся в файле sortScene.fxml |
-| myexceptions/GoingOutOfNumericRangeException.java | Класс исключения, возникающего, когда пользователь вводит данные, выходящие за рамки допустимого диапазона |
+| animations/AppearanceOf.java | A class that animates the appearance (or disappearance) of GUI elements |
+| animations/HighlightCell.java | A class that highlights cells with array elements |
+| application/Main.java | The main class through which the application is launched |
+| application/MyArray.java | The class of the array that is being sorted |
+| application/State.java | A class that tracks at what stage the user is working with the application |
+| fxml/descriptionScene.fxml | The file in which all elements of the initial scene are defined |
+| fxml/sortScene.fxml | A file that defines all the elements of the scene with sorting |
+| images | Folder with images used in the application |
+| controllers/DescriptionSceneController.java | Event handler class for GUI elements located in the descriptionScene.fxml file |
+| controllers/SortSceneController.java | Event handler class for GUI elements located in the sortScene.fxml file |
+| myexceptions/GoingOutOfNumericRangeException.java | A class of exception that occurs when a user enters data that is out of the acceptable range |
